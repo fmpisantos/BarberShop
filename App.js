@@ -43,7 +43,7 @@ const App = () => {
 							counter={counter}
 							increment={_increment}
 							incrementByAmount={_incrementByAmount}
-							style={style}
+							style={styles}
 						/>
 					)}
 				</Stack.Screen>
@@ -54,7 +54,7 @@ const App = () => {
 							counter={counter}
 							increment={_increment}
 							incrementByAmount={_incrementByAmount}
-							style={style}
+							style={styles}
 						/>
 					)}
 				</Stack.Screen>
