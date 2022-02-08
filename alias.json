@@ -1,0 +1,6 @@
+{
+    "@pages": "./src/pages",
+    "@components": "./src/components",
+    "@styles": "./src/styles",
+    "@store":"./src/redux"
+}
