@@ -1,7 +1,11 @@
 import React from 'react';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 const Stack = createNativeStackNavigator();
+
+// Langs
+const lang = require('@langs/ptpt.json')
 
 // Styles
 import styles from '@styles/style';
@@ -29,6 +33,7 @@ const App = () => {
 
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
+			<StatusBar backgroundColor={"black"}/>
 			<Stack.Navigator
 				screenOptions={{
 					headerShown: false,
@@ -40,6 +45,7 @@ const App = () => {
 					{(props) => (
 						<Home
 							{...props}
+							lang={lang}
 							counter={counter}
 							increment={_increment}
 							incrementByAmount={_incrementByAmount}
@@ -51,6 +57,7 @@ const App = () => {
 					{(props) => (
 						<About
 							{...props}
+							lang={lang}
 							counter={counter}
 							increment={_increment}
 							incrementByAmount={_incrementByAmount}

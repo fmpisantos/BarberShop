@@ -2,5 +2,7 @@
     "@pages": "./src/pages",
     "@components": "./src/components",
     "@styles": "./src/styles",
-    "@store":"./src/redux"
+    "@store":"./src/redux",
+    "@assets":"./assets",
+    "@langs": "./src/langs"
 }
