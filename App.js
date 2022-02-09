@@ -33,7 +33,7 @@ const App = () => {
 
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
-			<StatusBar backgroundColor={"black"}/>
+			<StatusBar backgroundColor={styles.background1.backgroundColor}/>
 			<Stack.Navigator
 				screenOptions={{
 					headerShown: false,

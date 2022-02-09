@@ -1,9 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+	background1:{
+		backgroundColor: '#C48F41',
+	},
+	backgroundIconFaded: {
+		backgroundColor: "rgba(196,143,65,0.3)"
+	},
+	backgroundIcon: {
+		backgroundColor: "rgba(196,143,65,0.7)"
+	},
 	container: {
 		flex: 1,
-		backgroundColor: '#000000',
+		backgroundColor: '#C48F41',
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
