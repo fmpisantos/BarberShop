@@ -6,11 +6,14 @@ export const slice = createSlice({
   initialState: {
     idx: 1,
     value: [true,true,false,false],
+    total: 0,
+    servicosAtivos: [false,false],
+    modal: -1
   },
   ...stateReducer
 });
 
-export const { nextState, replace } = slice.actions;
+export const { nextState, replace, removeService, addService, openModal, closeModal } = slice.actions;
 export const state = state => state.create
 
 export default slice.reducer;

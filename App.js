@@ -12,7 +12,7 @@ const servicos = require('@assets/servicos.json');
 import styles from '@styles/style';
 
 //Pages
-import Home from '@pages/Home';
+import Home from '@pages/Home/Home';
 import About from '@pages/About';
 
 // Components
@@ -21,19 +21,33 @@ import About from '@pages/About';
 import { Provider } from 'react-redux';
 import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { nextState, replace, state } from '@store/create/state';
+import { nextState, replace, removeService, addService, openModal, closeModal, state } from '@store/create/state';
 
 const App = () => {
 	const navigationRef = useNavigationContainerRef();
 	const control = useSelector(state);
 	const dispatch = useDispatch();
-	const _nextState = () => dispatch(nextState());
+	const _nextState = (id) => dispatch(nextState(id));
 	const _replace = (state) => {
 		dispatch(replace(state));
 	};
+	const _closeModal = () => dispatch(closeModal());
+	const _openModal = (id) => {
+		dispatch(openModal(id));
+	};
+	const _addService = (id) => {
+		dispatch(addService(id));
+	};
+	const _removeService = (id) => {
+		dispatch(removeService(id));
+	};
+	console.disableYellowBox = true;
+	const fromNumberToString = (number) => {
+		return `${number.toFixed(2)}€`
+	}
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
-			<StatusBar backgroundColor={styles.background1.backgroundColor}/>
+			<StatusBar backgroundColor={styles.background1.backgroundColor} />
 			<Stack.Navigator
 				screenOptions={{
 					headerShown: false,
@@ -51,6 +65,11 @@ const App = () => {
 							nextState={_nextState}
 							replace={_replace}
 							style={styles}
+							closeModal={_closeModal}
+							openModal={_openModal}
+							addService={_addService}
+							removeService={_removeService}
+							fromNumberToString={fromNumberToString}
 						/>
 					)}
 				</Stack.Screen>
@@ -74,7 +93,7 @@ const App = () => {
 export default function AppWrapper() {
 	return (
 		<Provider store={store}>
-			<App /> 
+			<App />
 		</Provider>
 	);
 }

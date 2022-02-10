@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
 		width: "80%",
 		height: "7%"
 	},
+	button: {
+		height: 50
+	},
 	bigButtonText:{
 		color: "#fff",
 		fontSize: 16
@@ -62,7 +65,8 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-start',
 	},
 	fixRight: {
-		alignSelf: 'flex-end'
+		alignSelf: 'flex-end',
+		alignItems: 'flex-end'
 	},
 	title:{
 		fontSize: 16,
@@ -86,6 +90,9 @@ const styles = StyleSheet.create({
 	center:{
 		justifyContent: 'center', //Centered horizontally
        	alignItems: 'center', //Centered vertically
+	},
+	centerVerticaly:{
+		alignItems: 'center', //Centered vertically
 	}
 });
 
