@@ -1,0 +1,12 @@
+[
+    {
+        "name": "HairCut",
+        "price": 10,
+        "time": "30min"
+    },
+    {
+        "name": "Beard",
+        "price": 8,
+        "time": "30min"
+    }
+]

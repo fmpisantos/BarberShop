@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Corte",
+        "price": 10,
+        "time": "30min"
+    },
+    {
+        "name": "Barba",
+        "price": 8,
+        "time": "30min"
+    }
+]

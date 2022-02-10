@@ -16,6 +16,20 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
+	modalContainer:{
+		flex: 1,
+		backgroundColor: 'rgba(0,0,0,0.1)',
+		alignItems: 'center',
+		justifyContent: 'flex-start'
+	},
+	modalView:{
+		backgroundColor: "white",
+		width: "98%",
+		position: "absolute",
+		bottom: "1%",
+		padding: "5%",
+		alignItems: 'center',
+	},
 	bigLogoStreach:{
 		width: '70%',
 		height: '35%',

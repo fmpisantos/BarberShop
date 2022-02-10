@@ -5,7 +5,8 @@ import { StatusBar } from 'react-native';
 const Stack = createNativeStackNavigator();
 
 // Langs
-const lang = require('@langs/ptpt.json')
+const lang = require('@langs/ptpt.json');
+const servicos = require('@assets/servicos.json');
 
 // Styles
 import styles from '@styles/style';
@@ -17,20 +18,19 @@ import About from '@pages/About';
 // Components
 
 // Store
-import { Provider } from 'react-redux'
-import store from '@store/store'
+import { Provider } from 'react-redux';
+import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, incrementByAmount, state } from '@store/counter';
+import { nextState, replace, state } from '@store/create/state';
 
 const App = () => {
 	const navigationRef = useNavigationContainerRef();
-	const counter = useSelector(state);
+	const control = useSelector(state);
 	const dispatch = useDispatch();
-	const _increment = () => dispatch(increment());
-	const _incrementByAmount = (amount) => {
-		dispatch(incrementByAmount(amount));
+	const _nextState = () => dispatch(nextState());
+	const _replace = (state) => {
+		dispatch(replace(state));
 	};
-
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
 			<StatusBar backgroundColor={styles.background1.backgroundColor}/>
@@ -45,10 +45,11 @@ const App = () => {
 					{(props) => (
 						<Home
 							{...props}
+							servicos={servicos}
 							lang={lang}
-							counter={counter}
-							increment={_increment}
-							incrementByAmount={_incrementByAmount}
+							control={control}
+							nextState={_nextState}
+							replace={_replace}
 							style={styles}
 						/>
 					)}
