@@ -14,6 +14,7 @@ import styles from '@styles/style';
 //Pages
 import Home from '@pages/Home';
 import About from '@pages/About';
+import ScheduleViewer from '@pages/ScheduleViewer';
 
 // Components
 
@@ -39,7 +40,7 @@ const App = () => {
 					headerShown: false,
 					tabBarStyle: { display: 'none' }
 				}}
-				initialRouteName="Home"
+				initialRouteName="ScheduleViewer"
 			>
 				<Stack.Screen name="Home">
 					{(props) => (
@@ -62,6 +63,20 @@ const App = () => {
 							counter={counter}
 							increment={_increment}
 							incrementByAmount={_incrementByAmount}
+							style={styles}
+						/>
+					)}
+				</Stack.Screen>
+				
+				<Stack.Screen name="ScheduleViewer">
+					{(props) => (
+						<ScheduleViewer
+							{...props}
+							servicos={servicos}
+							lang={lang}
+							control={control}
+							nextState={_nextState}
+							replace={_replace}
 							style={styles}
 						/>
 					)}
