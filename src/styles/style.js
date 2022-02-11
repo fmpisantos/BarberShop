@@ -25,8 +25,13 @@ const styles = StyleSheet.create({
 		marginTop: "5%",
 		padding: "5%"
 	},
+	barberImage: {
+		width: 50,
+		height: 50
+	},
 	modalContainer:{
 		flex: 1,
+		borderRadius:20,
 		backgroundColor: 'rgba(0,0,0,0.1)',
 		alignItems: 'center',
 		justifyContent: 'flex-start'
@@ -97,11 +102,14 @@ const styles = StyleSheet.create({
 		paddingVertical: "1.25%"
 	},
 	center:{
-		justifyContent: 'center', //Centered horizontally
-       	alignItems: 'center', //Centered vertically
+		justifyContent: 'center',
+       	alignItems: 'center'
 	},
 	centerVerticaly:{
-		alignItems: 'center', //Centered vertically
+		alignItems: 'center',
+	},
+	fixTop: {
+		justifyContent: 'flex-start'
 	}
 });
 

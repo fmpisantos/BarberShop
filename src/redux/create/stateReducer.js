@@ -4,7 +4,7 @@ const reducer = {
         nextState: (state,action) => {
             if(state.total === 0)
               state.value = [true,true,false,false]
-            else
+            else 
               state.value[action.payload] = true;
         },
         replace: (state, action) => {
@@ -24,6 +24,11 @@ const reducer = {
         removeService: (state,action) =>{
           state.servicosAtivos[action.payload.servico] = false;
           state.total -= action.payload.total;
+        },
+        selectBarber: (state,action) =>{
+          state.barber = action.payload;
+          state.value = [true,true,true,true];
+          state.modal = -1;
         },
       }
   }

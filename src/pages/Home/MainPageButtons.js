@@ -33,7 +33,7 @@ export default function MainPageButtons(props) {
 			<BigButton
 				color="#000000"
 				textColor={props.control.value[2] ? "white": "gray"}
-				onPress={()=>{if(props.control.value[2])props.nextState(3)}}
+				onPress={()=>{if(props.control.value[2])props.openModal(1)}}
 				text={props.lang.barbeiro}
 				{...props}
 				icon={<ButtonIcon background={props.style.backgroundIcon} backgroundfaded={props.style.backgroundIconFaded} icon={<Fontisto name="persons" style={props.style.padding10H} size={24} color={props.control.value[2] ? "white": "gray"} />} {...props} active={props.control.value[2]}/>}

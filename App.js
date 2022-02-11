@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 // Langs
 const lang = require('@langs/ptpt.json');
 const servicos = require('@assets/servicos.json');
+const barbers = require('@assets/barbers.json');
 
 // Styles
 import styles from '@styles/style';
@@ -22,7 +23,7 @@ import ScheduleViewer from '@pages/ScheduleViewer';
 import { Provider } from 'react-redux';
 import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { nextState, replace, removeService, addService, openModal, closeModal, state } from '@store/create/state';
+import { nextState, replace, removeService, addService, openModal, closeModal, state, selectBarber } from '@store/create/state';
 
 const App = () => {
 	const navigationRef = useNavigationContainerRef();
@@ -42,6 +43,9 @@ const App = () => {
 	const _removeService = (id) => {
 		dispatch(removeService(id));
 	};
+	const _selectBarber = (id) =>{
+		dispatch(selectBarber(id));
+	}
 	console.disableYellowBox = true;
 	const fromNumberToString = (number) => {
 		return `${number.toFixed(2)}€`
@@ -54,13 +58,14 @@ const App = () => {
 					headerShown: false,
 					tabBarStyle: { display: 'none' }
 				}}
-				initialRouteName="ScheduleViewer"
+				initialRouteName="Home"
 			>
 				<Stack.Screen name="Home">
 					{(props) => (
 						<Home
 							{...props}
 							servicos={servicos}
+							barbers={barbers}
 							lang={lang}
 							control={control}
 							nextState={_nextState}
@@ -71,6 +76,7 @@ const App = () => {
 							addService={_addService}
 							removeService={_removeService}
 							fromNumberToString={fromNumberToString}
+							selectBarber={_selectBarber}
 						/>
 					)}
 				</Stack.Screen>

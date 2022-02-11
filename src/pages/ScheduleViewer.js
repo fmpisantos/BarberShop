@@ -1,10 +1,6 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
-import Logo from '@assets/Logo.png';
-import BigButton from '@components/BigButton';
-import ButtonIcon from '@components/ButtonIcon';
-import { FontAwesome, Fontisto } from '@expo/vector-icons';
-import { Calendar, CalendarList, Agenda, DateData, AgendaEntry, AgendaSchedule } from 'react-native-calendars';
+import { Text, View } from 'react-native';
+import {  Agenda } from 'react-native-calendars';
 import Moment from 'moment';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -111,7 +107,6 @@ export default function ScheduleViewer(props) {
 			renderItem={renderItem}
 			renderEmptyDate={renderEmptyDate()}
 			rowHasChanged={rowHasChanged}
-			//onDayChange={(day)=>{updateItems(day)}}
 			renderKnob={() => {
 				return (
 					<View style={{ height: 14, padding: 4 }}>
@@ -128,9 +123,6 @@ export default function ScheduleViewer(props) {
 					</View>
 				);
 			}}
-			// rowHasChanged={(r1, r2) => {
-			// 	return r1.text !== r2.text;
-			// }}
 			theme={{
 				backgroundColor: '#f8f5f0',
 				calendarBackground: '#f8f5f0',
@@ -150,8 +142,6 @@ export default function ScheduleViewer(props) {
 					}
 				}
 			}}
-			// Agenda container style
-			style={{}}
 		/>
 	);
 }
