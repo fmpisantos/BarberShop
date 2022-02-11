@@ -16,6 +16,15 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
+	agendaContainer:{
+		// height: 100,
+		width: '100%',
+		backgroundColor: "#fff",
+		alignItems: 'flex-start',
+		justifyContent: 'center',
+		marginTop: "5%",
+		padding: "5%"
+	},
 	modalContainer:{
 		flex: 1,
 		backgroundColor: 'rgba(0,0,0,0.1)',

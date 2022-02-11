@@ -91,12 +91,9 @@ const App = () => {
 					{(props) => (
 						<ScheduleViewer
 							{...props}
-							servicos={servicos}
 							lang={lang}
-							control={control}
-							nextState={_nextState}
-							replace={_replace}
 							style={styles}
+							servicos={servicos}
 						/>
 					)}
 				</Stack.Screen>
