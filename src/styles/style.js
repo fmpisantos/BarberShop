@@ -10,6 +10,19 @@ const styles = StyleSheet.create({
 	backgroundIcon: {
 		backgroundColor: "rgba(196,143,65,0.7)"
 	},
+	dateselect: {
+		backgroundColor: '#f8f5f0',
+		borderRadius: 10,
+		color: "#000000",
+		padding: 5,
+
+	},
+	dateselected: {
+		backgroundColor: '#000000',
+		borderRadius: 10,
+		color: "#fff",
+		padding: 5,
+	},
 	container: {
 		flex: 1,
 		backgroundColor: '#C48F41',

@@ -1,0 +1,324 @@
+{
+    "days":{
+        "2022-02-12": [
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    "timeSheet": [
+        {
+            "hours": 8,
+            "minutes": 0,
+            "string": "08:00",
+            "reserved": false
+        },
+        {
+            "hours": 8,
+            "minutes": 15,
+            "string": "08:15",
+            "reserved": false
+        },
+        {
+            "hours": 8,
+            "minutes": 30,
+            "string": "08:30",
+            "reserved": false
+        },
+        {
+            "hours": 8,
+            "minutes": 45,
+            "string": "08:45",
+            "reserved": false
+        },
+        {
+            "hours": 9,
+            "minutes": 0,
+            "string": "09:00",
+            "reserved": false
+        },
+        {
+            "hours": 9,
+            "minutes": 15,
+            "string": "09:15",
+            "reserved": false
+        },
+        {
+            "hours": 9,
+            "minutes": 30,
+            "string": "09:30",
+            "reserved": false
+        },
+        {
+            "hours": 9,
+            "minutes": 45,
+            "string": "09:45",
+            "reserved": false
+        },
+        {
+            "hours": 10,
+            "minutes": 0,
+            "string": "10:00",
+            "reserved": false
+        },
+        {
+            "hours": 10,
+            "minutes": 15,
+            "string": "10:15",
+            "reserved": false
+        },
+        {
+            "hours": 10,
+            "minutes": 30,
+            "string": "10:30",
+            "reserved": false
+        },
+        {
+            "hours": 10,
+            "minutes": 45,
+            "string": "10:45",
+            "reserved": false
+        },
+        {
+            "hours": 11,
+            "minutes": 0,
+            "string": "11:00",
+            "reserved": false
+        },
+        {
+            "hours": 11,
+            "minutes": 15,
+            "string": "11:15",
+            "reserved": false
+        },
+        {
+            "hours": 11,
+            "minutes": 30,
+            "string": "11:30",
+            "reserved": false
+        },
+        {
+            "hours": 11,
+            "minutes": 45,
+            "string": "11:45",
+            "reserved": false
+        },
+        {
+            "hours": 12,
+            "minutes": 0,
+            "string": "12:00",
+            "reserved": false
+        },
+        {
+            "hours": 12,
+            "minutes": 15,
+            "string": "12:15",
+            "reserved": false
+        },
+        {
+            "hours": 12,
+            "minutes": 30,
+            "string": "12:30",
+            "reserved": false
+        },
+        {
+            "hours": 12,
+            "minutes": 45,
+            "string": "12:45",
+            "reserved": false
+        },
+        {
+            "hours": 13,
+            "minutes": 0,
+            "string": "13:00",
+            "reserved": true
+        },
+        {
+            "hours": 13,
+            "minutes": 15,
+            "string": "13:15",
+            "reserved": true
+        },
+        {
+            "hours": 13,
+            "minutes": 30,
+            "string": "13:30",
+            "reserved": true
+        },
+        {
+            "hours": 13,
+            "minutes": 45,
+            "string": "13:45",
+            "reserved": true
+        },
+        {
+            "hours": 14,
+            "minutes": 0,
+            "string": "14:00",
+            "reserved": false
+        },
+        {
+            "hours": 14,
+            "minutes": 15,
+            "string": "14:15",
+            "reserved": false
+        },
+        {
+            "hours": 14,
+            "minutes": 30,
+            "string": "14:30",
+            "reserved": false
+        },
+        {
+            "hours": 14,
+            "minutes": 45,
+            "string": "14:45",
+            "reserved": false
+        },
+        {
+            "hours": 15,
+            "minutes": 0,
+            "string": "15:00",
+            "reserved": false
+        },
+        {
+            "hours": 15,
+            "minutes": 15,
+            "string": "15:15",
+            "reserved": false
+        },
+        {
+            "hours": 15,
+            "minutes": 30,
+            "string": "15:30",
+            "reserved": false
+        },
+        {
+            "hours": 15,
+            "minutes": 45,
+            "string": "15:45",
+            "reserved": false
+        },
+        {
+            "hours": 16,
+            "minutes": 0,
+            "string": "16:00",
+            "reserved": false
+        },
+        {
+            "hours": 16,
+            "minutes": 15,
+            "string": "16:15",
+            "reserved": false
+        },
+        {
+            "hours": 16,
+            "minutes": 30,
+            "string": "16:30",
+            "reserved": false
+        },
+        {
+            "hours": 16,
+            "minutes": 45,
+            "string": "16:45",
+            "reserved": false
+        },
+        {
+            "hours": 17,
+            "minutes": 0,
+            "string": "17:00",
+            "reserved": false
+        },
+        {
+            "hours": 17,
+            "minutes": 15,
+            "string": "17:15",
+            "reserved": false
+        },
+        {
+            "hours": 17,
+            "minutes": 30,
+            "string": "17:30",
+            "reserved": false
+        },
+        {
+            "hours": 17,
+            "minutes": 45,
+            "string": "17:45",
+            "reserved": false
+        },
+        {
+            "hours": 18,
+            "minutes": 0,
+            "string": "18:00",
+            "reserved": false
+        },
+        {
+            "hours": 18,
+            "minutes": 15,
+            "string": "18:15",
+            "reserved": false
+        },
+        {
+            "hours": 18,
+            "minutes": 30,
+            "string": "18:30",
+            "reserved": false
+        },
+        {
+            "hours": 18,
+            "minutes": 45,
+            "string": "18:45",
+            "reserved": false
+        },
+        {
+            "hours": 19,
+            "minutes": 0,
+            "string": "19:00",
+            "reserved": false
+        },
+        {
+            "hours": 19,
+            "minutes": 15,
+            "string": "19:15",
+            "reserved": false
+        },
+        {
+            "hours": 19,
+            "minutes": 30,
+            "string": "19:30",
+            "reserved": false
+        },
+        {
+            "hours": 19,
+            "minutes": 45,
+            "string": "19:45",
+            "reserved": false
+        },
+        {
+            "hours": 20,
+            "minutes": 0,
+            "string": "20:00",
+            "reserved": false
+        },
+        {
+            "hours": 20,
+            "minutes": 15,
+            "string": "20:15",
+            "reserved": false
+        },
+        {
+            "hours": 20,
+            "minutes": 30,
+            "string": "20:30",
+            "reserved": false
+        },
+        {
+            "hours": 20,
+            "minutes": 45,
+            "string": "20:45",
+            "reserved": false
+        }
+    ]
+}

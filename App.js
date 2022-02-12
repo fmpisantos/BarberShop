@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 const lang = require('@langs/ptpt.json');
 const servicos = require('@assets/servicos.json');
 const barbers = require('@assets/barbers.json');
+const schedules = require('@assets/schedules.json');
 
 // Styles
 import styles from '@styles/style';
@@ -65,6 +66,7 @@ const App = () => {
 							{...props}
 							servicos={servicos}
 							barbers={barbers}
+							schedules={schedules}
 							lang={lang}
 							control={control}
 							replace={_replace}
