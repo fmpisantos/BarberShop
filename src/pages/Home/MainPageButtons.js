@@ -43,7 +43,7 @@ export default function MainPageButtons(props) {
 			<BigButton
 				color="#000000"
 				textColor={props.control.value[3] ? "white": "gray"}
-				onPress={()=>{if(props.control.value[3])props.nextState(3)}}
+				onPress={()=>{if(props.control.value[3])props.openModal(2)}}
 				text={props.lang.dataHora}
 				{...props}
 				icon={<ButtonIcon background={props.style.backgroundIcon} backgroundfaded={props.style.backgroundIconFaded} icon={<FontAwesome name="calendar-check-o" style={props.style.padding10H} size={24} color={props.control.value[3] ? "white": "gray"} />} {...props} active={props.control.value[3]}/>}

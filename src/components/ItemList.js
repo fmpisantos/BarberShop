@@ -9,7 +9,7 @@ export default function ItemList(props){
 	
 
     return(
-        <View style={[props.style.row,{backgroundColor: "rgba(0,0,0,0.1)", width:"100%", padding: "2%"},props.style.centerVerticaly]} >
+        <View style={[props.style.row,{backgroundColor: "rgba(0,0,0,0.1)", width:"100%", paddingVertical: "2%", paddingHorizontal: "4%",borderRadius: 10},props.style.centerVerticaly]} >
             <View style={{width: "20%"}}>
                 <Text>
                     {props.item.name}

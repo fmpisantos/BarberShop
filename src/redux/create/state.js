@@ -14,7 +14,7 @@ export const slice = createSlice({
   ...stateReducer
 });
 
-export const { nextState, replace, removeService, addService, openModal, closeModal, selectBarber } = slice.actions;
+export const { replace, removeService, addService, openModal, closeModal, selectBarber } = slice.actions;
 export const state = state => state.create
 
 export default slice.reducer;

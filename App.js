@@ -23,13 +23,12 @@ import ScheduleViewer from '@pages/ScheduleViewer';
 import { Provider } from 'react-redux';
 import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { nextState, replace, removeService, addService, openModal, closeModal, state, selectBarber } from '@store/create/state';
+import { replace, removeService, addService, openModal, closeModal, state, selectBarber } from '@store/create/state';
 
 const App = () => {
 	const navigationRef = useNavigationContainerRef();
 	const control = useSelector(state);
 	const dispatch = useDispatch();
-	const _nextState = (id) => dispatch(nextState(id));
 	const _replace = (state) => {
 		dispatch(replace(state));
 	};
@@ -43,13 +42,13 @@ const App = () => {
 	const _removeService = (id) => {
 		dispatch(removeService(id));
 	};
-	const _selectBarber = (id) =>{
+	const _selectBarber = (id) => {
 		dispatch(selectBarber(id));
-	}
+	};
 	console.disableYellowBox = true;
 	const fromNumberToString = (number) => {
-		return `${number.toFixed(2)}€`
-	}
+		return `${number.toFixed(2)}€`;
+	};
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
 			<StatusBar backgroundColor={styles.background1.backgroundColor} />
@@ -68,7 +67,6 @@ const App = () => {
 							barbers={barbers}
 							lang={lang}
 							control={control}
-							nextState={_nextState}
 							replace={_replace}
 							style={styles}
 							closeModal={_closeModal}
@@ -92,16 +90,9 @@ const App = () => {
 						/>
 					)}
 				</Stack.Screen>
-				
+
 				<Stack.Screen name="ScheduleViewer">
-					{(props) => (
-						<ScheduleViewer
-							{...props}
-							lang={lang}
-							style={styles}
-							servicos={servicos}
-						/>
-					)}
+					{(props) => <ScheduleViewer {...props} lang={lang} style={styles} servicos={servicos} />}
 				</Stack.Screen>
 			</Stack.Navigator>
 		</NavigationContainer>

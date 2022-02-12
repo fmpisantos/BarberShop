@@ -1,18 +1,13 @@
 const reducer = {
     reducers:
       {
-        nextState: (state,action) => {
-            if(state.total === 0)
-              state.value = [true,true,false,false]
-            else 
-              state.value[action.payload] = true;
-        },
         replace: (state, action) => {
             state.value = action.payload.value;
             state.idx = action.payload.idx;
         },
         closeModal: state =>{
             state.modal = -1;
+            state.value = [true,true,state.total !== 0,state.total !== 0 && state.barber !== -1]
         },
         openModal: (state,action) =>{
           state.modal = action.payload

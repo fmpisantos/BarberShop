@@ -31,16 +31,16 @@ const styles = StyleSheet.create({
 	},
 	modalContainer:{
 		flex: 1,
-		borderRadius:20,
 		backgroundColor: 'rgba(0,0,0,0.1)',
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
 	modalView:{
 		backgroundColor: "white",
-		width: "98%",
+		width: "93%",
+		borderRadius: 10,
 		position: "absolute",
-		bottom: "1%",
+		bottom: "2%",
 		padding: "5%",
 		alignItems: 'center',
 	},
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
 	},
 	bigButton: {
 		width: "80%",
-		height: "7%"
+		height: "7%",
+		borderRadius: 10,
 	},
 	button: {
 		height: 50
