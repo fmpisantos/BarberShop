@@ -6,7 +6,7 @@ import BottomModal from '@components/BottomModal';
 
 export default function ModalServices(props) {
 	return (
-		<BottomModal {...props}>
+		<BottomModal {...props} visible={props.control.modal == 0}>
 			<ScrollView>
 				{props.servicos.map((item,key)=>
 						<>

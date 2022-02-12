@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import {  Agenda } from 'react-native-calendars';
+import { Agenda } from 'react-native-calendars';
 import Moment from 'moment';
 import { ScrollView } from 'react-native-gesture-handler';
 

@@ -6,7 +6,7 @@ export default function BottomModal(props) {
 		<Modal
             animationType="slide"
             transparent={true}
-            visible={props.control.modal == 0}
+            visible={props.visible ?? false}
             onRequestClose={props.closeModal}
         >
             <TouchableOpacity activeOpacity={1} style={props.style.modalContainer} onPress={props.closeModal}>
