@@ -7,7 +7,7 @@ const reducer = {
         },
         closeModal: state =>{
             state.modal = -1;
-            state.value = [true,true,state.total !== 0,state.total !== 0 && state.barber !== -1]
+            state.value = [true,true,state.total !== 0,state.total !== 0 && state.barber !== -1, state.total !== 0 && state.barber !== -1 && state.dateSelected.hours?.length > 0 && state.dateSelected.minutes?.length > 0]
         },
         openModal: (state,action) =>{
           state.modal = action.payload
@@ -25,6 +25,20 @@ const reducer = {
           state.value = [true,true,true,true];
           state.modal = -1;
         },
+        resetDate: (state) => {
+          state.dateSelected = {
+            "string": "",
+            hours: "",
+            minutes: "",
+            day: "",
+            month: "",
+            year: "",
+            duration: ""
+          }
+        },
+        selectDate: (state, action) => {
+          state.dateSelected = action.payload;
+        }
       }
   }
   

@@ -9,12 +9,21 @@ export const slice = createSlice({
     total: 0,
     servicosAtivos: [false,false],
     modal: -1,
-    barber: -1
+    barber: -1,
+    dateSelected: {
+      "string": "",
+      hours: "",
+      minutes: "",
+      day: "",
+      month: "",
+      year: "",
+      duration: ""
+    }
   },
   ...stateReducer
 });
 
-export const { replace, removeService, addService, openModal, closeModal, selectBarber } = slice.actions;
+export const { replace, removeService, addService, openModal, closeModal, selectBarber, selectDate, resetDate } = slice.actions;
 export const state = state => state.create
 
 export default slice.reducer;

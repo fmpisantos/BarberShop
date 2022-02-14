@@ -6,15 +6,19 @@ import Button from '@components/Button'
 
 export default function ModalDate(props) {
 	const [ timesheet, setTimesheet ] = useState([]);
+	const [selectedHour, setSelectedHour] = useState(-1);
 	return (
 		<BottomModal {...props} visible={props.control.modal == 2}>
-			<Calendar {...props} setTimesheet={setTimesheet} />
+			<Calendar {...props} setTimesheet={setTimesheet} resetHour={()=>{setSelectedHour(-1)}}/>
 			<ScrollView scrollEnabled horizontal>
 				{timesheet.map((item, key) => {
 					return (
 						<View key={key} style={{padding: 10}}>
-							<TouchableOpacity  style={[ props.style.dateselect ]}>
-								<Text style={props.style.center}>{item.string}</Text>
+							<TouchableOpacity  style={[ selectedHour === key || `${props.control.hours}:${props.control.minutes}`===item.string ? props.style.dateselected:props.style.dateselect ]} onPress={()=>{setSelectedHour(key);props.selectDate({...props.control.dateSelected,
+								hours: item.string.split(":")[0],
+								minutes: item.string.split(":")[1]
+							});}}>
+								<Text style={[props.style.center, selectedHour === key || `${props.control.hours}:${props.control.minutes}`===item.string ? props.style.textSelected:props.style.textUnSelected ]}>{item.string}</Text>
 							</TouchableOpacity>
 						</View>
 					);
@@ -25,7 +29,7 @@ export default function ModalDate(props) {
 					style={{borderRadius: 10}}
 					color={props.style.background1.backgroundColor}
 					textColor={"white"}
-					onPress={props.closeModal}
+					onPress={()=>{props.closeModal()}}
 					{...props}
 					component={
 					<View style={[props.style.row]}>

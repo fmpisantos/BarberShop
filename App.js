@@ -24,32 +24,52 @@ import ScheduleViewer from '@pages/ScheduleViewer';
 import { Provider } from 'react-redux';
 import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { replace, removeService, addService, openModal, closeModal, state, selectBarber } from '@store/create/state';
+import { replace, removeService, addService, openModal, closeModal, state, selectBarber, selectDate, resetDate } from '@store/create/state';
 
 const App = () => {
+	
 	const navigationRef = useNavigationContainerRef();
+
 	const control = useSelector(state);
+
 	const dispatch = useDispatch();
+
 	const _replace = (state) => {
 		dispatch(replace(state));
 	};
+
 	const _closeModal = () => dispatch(closeModal());
+
 	const _openModal = (id) => {
 		dispatch(openModal(id));
 	};
+
 	const _addService = (id) => {
 		dispatch(addService(id));
 	};
+
 	const _removeService = (id) => {
 		dispatch(removeService(id));
 	};
+
 	const _selectBarber = (id) => {
 		dispatch(selectBarber(id));
 	};
+
+	const _selectDate = (date) =>{
+		dispatch(selectDate(date));
+	}
+
+	const _resetDate = () =>{
+		dispatch(resetDate());
+	}
+
 	console.disableYellowBox = true;
+
 	const fromNumberToString = (number) => {
 		return `${number.toFixed(2)}€`;
 	};
+
 	return (
 		<NavigationContainer ref={navigationRef} headerMode={null}>
 			<StatusBar backgroundColor={styles.background1.backgroundColor} />
@@ -77,6 +97,8 @@ const App = () => {
 							removeService={_removeService}
 							fromNumberToString={fromNumberToString}
 							selectBarber={_selectBarber}
+							selectDate={_selectDate}
+							resetDate={_resetDate}
 						/>
 					)}
 				</Stack.Screen>

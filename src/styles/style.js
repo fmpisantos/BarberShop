@@ -23,6 +23,12 @@ const styles = StyleSheet.create({
 		color: "#fff",
 		padding: 5,
 	},
+	textUnSelected: {
+		color: "#000000"
+	},
+	textSelected: {
+		color: "#fff"
+	},
 	container: {
 		flex: 1,
 		backgroundColor: '#C48F41',

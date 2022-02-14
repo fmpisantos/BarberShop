@@ -5,13 +5,33 @@ import { Calendar } from 'react-native-calendars';
 export default function MyCalendar(props) {
 	const [ day, setDay ] = useState(Moment().format('YYYY-MM-DD'));
 
-	const loadDay = (day) => {
+	const loadDay = (day, reset = true) => {
 		setDay(day.dateString);
+		if(reset){
+			props.resetHour();
+			props.selectDate({
+				"string": "",
+				hours: "",
+				minutes: "",
+				day: day.day,
+				month: day.month,
+				year: day.year,
+				duration: ""
+			});
+		}
         props.setTimesheet(props.schedules.days[day.dateString]?.[props.control.barber!==-1?props.control.barber : 0]?.length > 0?props.schedules.days[day.dateString][props.control.barber!==-1?props.control.barber : 0]: props.schedules.timeSheet);
 	};
 
 	useEffect(() => {
-		loadDay({ day: {dateString:Moment().format('YYYY-MM-DD') }});
+		let d = props.control.day!==""?Moment(`${props.control.dateSelected.year}-${props.control.dateSelected.month}-${props.control.dateSelected.day}`,'YYYY-MM-DD'):Moment()
+		loadDay({
+				dateString: d.format('YYYY-MM-DD'), 
+				hours: "",
+				minutes: "",
+				day: d.day(),
+				month: d.month(),
+				year: d.year()
+		},props.control.dateSelected.day==="" || props.control.dateSelected.hour==="");
 	}, []);
 
 	return (

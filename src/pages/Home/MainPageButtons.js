@@ -49,6 +49,16 @@ export default function MainPageButtons(props) {
 				icon={<ButtonIcon background={props.style.backgroundIcon} backgroundfaded={props.style.backgroundIconFaded} icon={<FontAwesome name="calendar-check-o" style={props.style.padding10H} size={24} color={props.control.value[3] ? "white": "gray"} />} {...props} active={props.control.value[3]}/>}
 				iconstyle={props.style.background1}
 			/>
+			<View style={props.style.spacing}/>
+			<BigButton
+				color="#000000"
+				textColor={props.control.value[4] ? "white": "gray"}
+				onPress={()=>{if(props.control.value[4])alert("Saved")}}
+				text={props.lang.reservar}
+				{...props}
+				icon={<ButtonIcon background={props.style.backgroundIcon} backgroundfaded={props.style.backgroundIconFaded} icon={<FontAwesome name="save" style={props.style.padding10H} size={24} color={props.control.value[4] ? "white": "gray"} />} {...props} active={props.control.value[4]}/>}
+				iconstyle={props.style.background1}
+			/>
 		</>
 	);
 }
