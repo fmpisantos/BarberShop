@@ -1,36 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Text, View } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import Moment from 'moment';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function ScheduleViewer(props) {
-	const items = {
-		'2022-02-4': [],
-		'2022-02-5': [],
-		'2022-02-6': [],
-		'2022-02-7': [],
-		'2022-02-8': [],
-		'2022-02-9': [],
-		'2022-02-10': [],
-		'2022-02-11': [
-			{ key: '2022-02-11', name: 'Filipe', services: [ true, false ], start: '10:30', end: '11:00' }
-		],
-		'2022-02-12': [
-			{ name: 'Bruno', services: [ true, true ], start: '09:30', end: '10:30' },
-			{ name: 'João', services: [ false, true ], start: '10:30', end: '11:00' },
-			{ name: 'Bruno', services: [ true, true ], start: '11:00', end: '12:00' },
-			{ name: 'João', services: [ false, true ], start: '12:00', end: '12:30' },
-			{ name: 'Bruno', services: [ true, true ], start: '14:30', end: '15:30' },
-			{ name: 'João', services: [ false, true ], start: '15:30', end: '16:00' }
-		],
-		'2022-02-13': [],
-		'2022-02-14': [],
-		'2022-02-15': [],
-		'2022-02-16': [],
-		'2022-02-17': [],
-		'2022-02-18': []
-	};
+	const [items, setItems] = useState({})
 
 	var displayedItems = {
 		day: {
@@ -45,7 +20,13 @@ export default function ScheduleViewer(props) {
 
 	const changeDay = (day) => {
 		displayedItems = { day: day, array: items[day.dateString] || [] };
+		requestSchedule(day);
 	};
+
+	useEffect(()=>{
+		requestSchedule(Moment().format('YYYY-MM-DD'))
+	}, [])
+	
 
 	const renderItem = (reservation, isFirst) => {
 		return (
@@ -95,6 +76,64 @@ export default function ScheduleViewer(props) {
 		const date = new Date(time);
 		return date.toISOString().split('T')[0];
 	};
+
+	const requestSchedule = (day) => {
+		const request = {
+			method: 'POST',
+			body:  day.dateString
+		}
+
+		console.log(day.dateString)
+		fetch('https://notalkfood.herokuapp.com/barbers/1/history', request)
+			.then( response =>{ 
+				
+				console.log(response)
+				return response.status===200?response.json():null
+			 } )
+			.then((json)=>{
+				console.log(json);
+				if( json !== null )
+				{
+					let temp = items 
+					let arrCont = []
+
+					for( let i in json )
+					{
+						const next = json[i];
+						const start = Moment(next.date_time);
+						const end = Moment(next.date_time).add(next.duration, 'minutes')
+						let arr = Array(props.servicos.length).fill(false);
+						arr[next.service_id] = true
+						console.log(`${start.hours()}:${start.minutes()}`)
+						console.log(`${end.hours()}:${end.minutes()}`)
+						let content = {
+							name: next.clientname,
+							services: arr,
+							start: `${start.hours()}:${start.minutes()}`,
+							end  : `${end.hours()}:${end.minutes()}`
+						}
+
+						arrCont.push(content)
+						
+					}
+					temp[day.dateString] = arrCont
+					setItems(temp)
+				}
+
+				/*for( let j in items)
+				{
+					let tmp = {}
+
+					if( items[j].name !== undefined )
+					{
+						tmp.push(items[j])
+					}
+				}
+				setItems(tmp)*/
+				console.log('ITEMS: ')
+				console.log(items)
+			})
+	}
 
 	var today = Moment().format('YYYY-MM-DD');
 	return (
