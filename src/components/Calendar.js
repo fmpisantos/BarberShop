@@ -7,31 +7,46 @@ export default function MyCalendar(props) {
 
 	const loadDay = (day, reset = true) => {
 		setDay(day.dateString);
-		if(reset){
+		let date = Moment(day.dateString)
+		if (reset) {
 			props.resetHour();
 			props.selectDate({
-				"string": "",
-				hours: "",
-				minutes: "",
-				day: day.day,
-				month: day.month,
-				year: day.year,
-				duration: ""
+				dateString: date.format('YYYY-MM-DD'),
+				hours: '',
+				minutes: '',
+				day: date.format('DD'),
+				month: date.format('MM'),
+				year: date.format('YYYY')
 			});
 		}
-        props.setTimesheet(props.schedules.days[day.dateString]?.[props.control.barber!==-1?props.control.barber : 0]?.length > 0?props.schedules.days[day.dateString][props.control.barber!==-1?props.control.barber : 0]: props.schedules.timeSheet);
+		fetch(`${props.url}/barbershop/${1}/barber/${props.control.barber + 1}?datetime=${day.dateString}`)
+			.then((response) => response.json())
+			.then((json) => {
+				props.setTimesheet(json);
+			});
 	};
 
 	useEffect(() => {
-		let d = props.control.day!==""?Moment(`${props.control.dateSelected.year}-${props.control.dateSelected.month}-${props.control.dateSelected.day}`,'YYYY-MM-DD'):Moment()
-		loadDay({
-				dateString: d.format('YYYY-MM-DD'), 
-				hours: "",
-				minutes: "",
-				day: d.day(),
-				month: d.month(),
-				year: d.year()
-		},props.control.dateSelected.day==="" || props.control.dateSelected.hour==="");
+		let d =
+			props.control.day && props.control.day !== ''
+				? Moment(
+						`${props.control.dateSelected.year}-${props.control.dateSelected.month}-${props.control
+							.dateSelected.day}`,
+						'YYYY-MM-DD'
+					)
+				: Moment()
+
+		loadDay(
+			{
+				dateString: d.format('YYYY-MM-DD'),
+				hours: '',
+				minutes: '',
+				day: d.format('DD'),
+				month: d.format('MM'),
+				year: d.format('YYYY')
+			},
+			props.control.dateSelected.day === '' || props.control.dateSelected.hour === ''
+		);
 	}, []);
 
 	return (

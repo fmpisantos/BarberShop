@@ -13,10 +13,10 @@ export default function ScheduleViewer(props) {
 		'2022-02-8': [],
 		'2022-02-9': [],
 		'2022-02-10': [],
-		'2022-02-11': [
+		'2022-02-27': [
 			{ key: '2022-02-11', name: 'Filipe', services: [ true, false ], start: '10:30', end: '11:00' }
 		],
-		'2022-02-12': [
+		'2022-02-28': [
 			{ name: 'Bruno', services: [ true, true ], start: '09:30', end: '10:30' },
 			{ name: 'João', services: [ false, true ], start: '10:30', end: '11:00' },
 			{ name: 'Bruno', services: [ true, true ], start: '11:00', end: '12:00' },

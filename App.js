@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
@@ -6,9 +6,9 @@ const Stack = createNativeStackNavigator();
 
 // Langs
 const lang = require('@langs/ptpt.json');
-const servicos = require('@assets/servicos.json');
-const barbers = require('@assets/barbers.json');
-const schedules = require('@assets/schedules.json');
+// const servicos = require('@assets/services.json');
+// const barbers = require('@assets/barbers.json');
+//const schedules = require('@assets/schedules.json');
 
 // Styles
 import styles from '@styles/style';
@@ -24,11 +24,48 @@ import ScheduleViewer from '@pages/ScheduleViewer';
 import { Provider } from 'react-redux';
 import store from '@store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { replace, removeService, addService, openModal, closeModal, state, selectBarber, selectDate, resetDate } from '@store/create/state';
+import {
+	replace,
+	removeService,
+	addService,
+	openModal,
+	closeModal,
+	state,
+	selectBarber,
+	selectDate,
+	resetDate
+} from '@store/create/state';
 
 const App = () => {
-	
 	const navigationRef = useNavigationContainerRef();
+
+	const [ servicos, setServicos ] = useState([]);
+	const [ barbers, setBarbers ] = useState([]);
+	// const [ schedules, setSchedules ] = useState([]);
+
+	const url = 'https://notalkfood.herokuapp.com';
+	// const url = 'http://localhost:8080';
+
+	useEffect(() => {
+		fetch(`${url}/barbershop/1/services`)
+			.then((response) => response.json())
+			.then((json) => {
+				setServicos(json);
+			})
+			.catch((err) => {
+				alert(err);
+			});
+
+		fetch(`${url}/barbershop/1/barbers`)
+			.then((response) => response.json())
+			.then((json) => {
+				const barber = json.sort( (a,b) => a.id > b.id );
+				setBarbers(barber);
+			})
+			.catch((err) => {
+				alert(err);
+			});
+	}, []);
 
 	const control = useSelector(state);
 
@@ -56,13 +93,13 @@ const App = () => {
 		dispatch(selectBarber(id));
 	};
 
-	const _selectDate = (date) =>{
+	const _selectDate = (date) => {
 		dispatch(selectDate(date));
-	}
+	};
 
-	const _resetDate = () =>{
+	const _resetDate = () => {
 		dispatch(resetDate());
-	}
+	};
 
 	console.disableYellowBox = true;
 
@@ -84,9 +121,10 @@ const App = () => {
 					{(props) => (
 						<Home
 							{...props}
+							url={url}
 							servicos={servicos}
 							barbers={barbers}
-							schedules={schedules}
+							// schedules={schedules}
 							lang={lang}
 							control={control}
 							replace={_replace}
@@ -102,10 +140,12 @@ const App = () => {
 						/>
 					)}
 				</Stack.Screen>
+
 				<Stack.Screen name="About">
 					{(props) => (
 						<About
 							{...props}
+							url={url}
 							lang={lang}
 							counter={counter}
 							increment={_increment}
@@ -116,7 +156,7 @@ const App = () => {
 				</Stack.Screen>
 
 				<Stack.Screen name="ScheduleViewer">
-					{(props) => <ScheduleViewer {...props} lang={lang} style={styles} servicos={servicos} />}
+					{(props) => <ScheduleViewer {...props} url={url} lang={lang} style={styles} servicos={servicos} />}
 				</Stack.Screen>
 			</Stack.Navigator>
 		</NavigationContainer>
