@@ -8,5 +8,7 @@
     "dataHora": "Data e Hora",
     "confirmar": "Confirmar",
     "mes": ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
-    "reservar": "Reservar"
+    "reservar": "Reservar",
+    "reservado": "Reserva guardada",
+    "dismiss": "Ok"
 }

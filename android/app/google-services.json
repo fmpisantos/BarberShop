@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "352854351496",
+    "project_id": "barbershop-63aa6",
+    "storage_bucket": "barbershop-63aa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352854351496:android:afb6e798f06583f967493d",
+        "android_client_info": {
+          "package_name": "com.reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352854351496-glr4geat9u3vh9he3gku3o3lhvgl8ba9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU8DUlfeCo68zeqhObpxi849y1nz4LOdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352854351496-glr4geat9u3vh9he3gku3o3lhvgl8ba9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
