@@ -83,18 +83,14 @@ export default function ScheduleViewer(props) {
 			body:  day.dateString
 		}
 
-		console.log(day.dateString)
 		fetch('https://notalkfood.herokuapp.com/barbers/1/history', request)
 			.then( response =>{ 
-				
-				console.log(response)
 				return response.status===200?response.json():null
 			 } )
 			.then((json)=>{
-				console.log(json);
 				if( json !== null )
 				{
-					let temp = items 
+					let temp = items
 					let arrCont = []
 
 					for( let i in json )
@@ -104,8 +100,6 @@ export default function ScheduleViewer(props) {
 						const end = Moment(next.date_time).add(next.duration, 'minutes')
 						let arr = Array(props.servicos.length).fill(false);
 						arr[next.service_id] = true
-						console.log(`${start.hours()}:${start.minutes()}`)
-						console.log(`${end.hours()}:${end.minutes()}`)
 						let content = {
 							name: next.clientname,
 							services: arr,
@@ -130,13 +124,12 @@ export default function ScheduleViewer(props) {
 					}
 				}
 				setItems(tmp)*/
-				console.log('ITEMS: ')
-				console.log(items)
 			})
 	}
 
 	var today = Moment().format('YYYY-MM-DD');
 	return (
+		<>
 		<Agenda
 			items={items}
 			onDayPress={(day) => {
@@ -182,5 +175,6 @@ export default function ScheduleViewer(props) {
 				}
 			}}
 		/>
+		</>
 	);
 }

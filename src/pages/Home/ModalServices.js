@@ -16,17 +16,6 @@ export default function ModalServices(props) {
 				)}
 			</ScrollView>
 			<View style={props.style.row}>
-				{/*<View style={{width: "20%",padding: "2%"}}>
-					<Button
-						color="gray"
-						textColor={"white"}
-						onPress={props.closeModal}
-						{...props}
-						component={<Ionicons name="arrow-undo-outline" size={24} color="black" />}
-					/>
-				</View>
-				*/}
-				{/* <View style={{width: "85%",padding: "2%"}}> */}
 				<View style={{width: "100%",paddingVertical: "2%"}}>
 					<Button
 						style={{borderRadius: 10}}
