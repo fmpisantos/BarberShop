@@ -23,7 +23,7 @@ export const slice = createSlice({
   ...stateReducer
 });
 
-export const { replace, removeService, addService, openModal, closeModal, selectBarber, selectDate, resetDate } = slice.actions;
+export const { replace, removeService, addService, openModal, closeModal, selectBarber, selectDate, resetDate, reset } = slice.actions;
 export const state = state => state.create
 
 export default slice.reducer;
