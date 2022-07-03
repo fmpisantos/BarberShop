@@ -26,11 +26,10 @@ export default function MainPageButtons(props) {
                     "serviceId": parseInt(i) + 1,
                     "shopId": 1,
                     "barberId": props.control.barber + 1,
-                    "clientId": 2,
+                    "clientId": 1,
                     "dateTime": date
                 }
-
-                console.log(`${props.url}/history`);
+                duration += props.servicos[i].duration;
                 fetch(`${props.url}/history`, {
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,7 +39,6 @@ export default function MainPageButtons(props) {
                 })
                     .then(response => {
                         if (response.ok) {
-                            duration += props.servicos[i].duration;
                             setAlert(true)
                         } else
                             setErrorAlert({
@@ -81,7 +79,7 @@ export default function MainPageButtons(props) {
                 color="#000000"
                 textColor={props.control.value[1] ? "white" : "gray"}
                 onPress={() => {
-                    if (props.servicos.length === 0) try{props.loadServices()}catch{}
+                    if (props.servicos.length === 0) props.loadServices()
                     if (props.control.value[1]) props.openModal(0)
                 }}
                 text={getServiceName() ?? props.lang.servico}
@@ -99,7 +97,7 @@ export default function MainPageButtons(props) {
                 color="#000000"
                 textColor={props.control.value[2] ? "white" : "gray"}
                 onPress={() => {
-                    if (props.barbers.length === 0) try{ props.loadBerbers() }catch{}
+                    if (props.barbers.length === 0) props.loadBerbers()
                     if (props.control.value[2]) props.openModal(1)
                 }}
                 text={props.barbers[props.control.barber]?.name ?? props.lang.barbeiro}

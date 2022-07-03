@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-start',
 	},
 	fixRight: {
-		alignSelf: 'flex-end',
+		// alignSelf: 'flex-end',
 		alignItems: 'flex-end'
 	},
 	title:{
@@ -130,6 +130,11 @@ const styles = StyleSheet.create({
 	},
 	fixTop: {
 		justifyContent: 'flex-start'
+	},
+	centerAlignTextVerticaly: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center'
 	}
 });
 
