@@ -10,5 +10,6 @@
     "mes": ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
     "reservar": "Reservar",
     "reservado": "Reserva guardada",
-    "dismiss": "Ok"
+    "dismiss": "Ok",
+    "noSchedule": "Este barbeiro não tem horários\ndisponiveis para este dia"
 }

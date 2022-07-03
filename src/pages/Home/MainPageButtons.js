@@ -26,11 +26,10 @@ export default function MainPageButtons(props) {
                     "serviceId": parseInt(i) + 1,
                     "shopId": 1,
                     "barberId": props.control.barber + 1,
-                    "clientId": 2,
+                    "clientId": 1,
                     "dateTime": date
                 }
-
-                console.log(`${props.url}/history`);
+                duration += props.servicos[i].duration;
                 fetch(`${props.url}/history`, {
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,7 +39,6 @@ export default function MainPageButtons(props) {
                 })
                     .then(response => {
                         if (response.ok) {
-                            duration += props.servicos[i].duration;
                             setAlert(true)
                         } else
                             setErrorAlert({

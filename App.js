@@ -46,26 +46,33 @@ const App = () => {
     const url = `http:${localhost}:8080`;
 
     const loadBarbers = () => {
-        fetch(`${url}/barbershop/1/barbers`)
-            .then((response) => response.json())
-            .then((json) => {
-                const barber = json.sort((a, b) => a.id > b.id);
-                setBarbers(barber);
-            })
-            .catch((err) => {
-                alert(err);
-            });
+        try {
+            fetch(`${url}/barbershop/1/barbers`)
+                .then((response) => response.json())
+                .then((json) => {
+                    const barber = json.sort((a, b) => a.id > b.id);
+                    setBarbers(barber);
+                })
+                .catch((err) => {
+                    alert(err);
+                });
+        } catch {
+        }
+
     }
 
     const loadServices = () => {
-        fetch(`${url}/barbershop/1/services`)
-            .then((response) => response.json())
-            .then((json) => {
-                setServicos(json);
-            })
-            .catch((err) => {
-                alert(err);
-            });
+        try {
+            fetch(`${url}/barbershop/1/services`)
+                .then((response) => response.json())
+                .then((json) => {
+                    setServicos(json);
+                })
+                .catch((err) => {
+                    alert(err);
+                });
+        } catch {
+        }
     }
 
     useEffect(() => {
