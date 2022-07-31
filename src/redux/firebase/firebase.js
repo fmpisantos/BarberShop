@@ -6,23 +6,16 @@ export const slice = createSlice({
     initialState: {
         user: {
             id: null,
-            name: null,
-            phone: null
+            name: "",
+            phone: "",
+            validNumber: true
         }
     },
     ...stateReducer
 });
 
-export const { clearUser, setUser } = slice.actions;
+export const { clearUser, setUser, login } = slice.actions;
 
 export const state = state => state.firebase
-
-export const login = () => {
-
-};
-
-export const logout = dispatch => {
-    alert("Logout");
-}
 
 export default slice.reducer;

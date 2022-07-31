@@ -11,5 +11,16 @@
     "reservar": "Reservar",
     "reservado": "Reserva guardada",
     "dismiss": "Ok",
-    "noSchedule": "Este barbeiro não tem horários\ndisponiveis para este dia"
+    "noSchedule": "Este barbeiro não tem horários\ndisponiveis para este dia",
+    "login": {
+        "name": {
+            "label": "Nome",
+            "over": "Nome para a reserva"
+        },
+        "phone": {
+            "label": "Telemóvel",
+            "over": "Número de telemóvel"
+        },
+        "title": "Ficha de cliente"
+    }
 }

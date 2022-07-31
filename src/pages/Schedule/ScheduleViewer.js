@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import Moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
-import {getTimeFromMoment} from "../utils/date";
+import {getTimeFromMoment} from "@utils/date";
 
 export default function ScheduleViewer(props) {
     const [items, setItems] = useState({})

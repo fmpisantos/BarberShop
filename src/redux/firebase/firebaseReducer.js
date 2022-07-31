@@ -4,11 +4,12 @@ const reducer = {
             clearUser: state => {
                 state.user = {
                     id: null,
-                    name: null,
-                    phone: null
+                    name: "",
+                    phone: "",
+                    validNumber: true
                 };
             },
-            login:  (state, action) => {
+            setUser:  (state, action) => {
                 state.user = action.payload.user;
             }
         }

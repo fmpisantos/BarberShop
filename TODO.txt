@@ -1,0 +1,5 @@
+Acabar login do user
+    Inicialmente users registados por numero de telemovel(unique id) e nome
+    Possivel integração com apple login e google login
+Filtrar calendario por user/barber/barbershop
+

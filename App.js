@@ -13,8 +13,8 @@ import styles from '@styles/style';
 
 //Pages
 import Home from '@pages/Home/Home';
-import About from '@pages/About';
-import ScheduleViewer from '@pages/ScheduleViewer';
+import UserLogin from '@pages/Login/UserLogin';
+import ScheduleViewer from '@pages/Schedule/ScheduleViewer';
 
 // Components
 
@@ -34,6 +34,11 @@ import {
     resetDate,
     reset
 } from '@store/create/state';
+import {
+    setUser,
+    resetUser,
+    state as loginState
+}from '@store/firebase/firebase';
 
 const App = () => {
     const navigationRef = useNavigationContainerRef();
@@ -81,6 +86,7 @@ const App = () => {
     }, []);
 
     const control = useSelector(state);
+    const loginControl = useSelector(loginState);
 
     const dispatch = useDispatch();
 
@@ -116,6 +122,12 @@ const App = () => {
     const _reset = () => {
         dispatch(reset());
     };
+    const _saveUserInfo = (field, val) => {
+        dispatch(setUser( {
+            ...loginControl,
+            [field]: val
+        }));
+    }
 
     console.disableYellowBox = true;
     LogBox.ignoreAllLogs(true)
@@ -132,7 +144,7 @@ const App = () => {
                     headerShown: false,
                     tabBarStyle: {display: 'none'}
                 }}
-                initialRouteName="Home"
+                initialRouteName="Test"
             >
             <Stack.Screen name="Home">
                     {(props) => (
@@ -161,16 +173,19 @@ const App = () => {
                     )}
                 </Stack.Screen>
 
-                <Stack.Screen name="About">
+                <Stack.Screen name="Test">
                     {(props) => (
-                        <About
+                        <UserLogin
                             {...props}
                             url={url}
                             lang={lang}
-                            counter={counter}
-                            increment={_increment}
-                            incrementByAmount={_incrementByAmount}
                             style={styles}
+                            saveNumber={(number)=>{_saveUserInfo("number",number)}}
+                            saveName={(name)=>{_saveUserInfo("name",name)}}
+                            name={loginControl.name}
+                            number={loginControl.number}
+                            loginState={loginControl}
+                            validNumber={loginControl.validNumber}
                         />
                     )}
                 </Stack.Screen>
@@ -186,6 +201,8 @@ const App = () => {
 };
 
 export default function AppWrapper() {
+    console.disableYellowBox = true;
+    LogBox.ignoreAllLogs(true);
     return (
         <Provider store={store} style={styles.fix}>
             <App/>

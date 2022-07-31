@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
+	fixItemsLeft: {
+		alignItems: 'stretch'
+	},
 	agendaContainer:{
 		// height: 100,
 		width: '100%',
@@ -56,6 +59,46 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(0,0,0,0.1)',
 		alignItems: 'center',
 		justifyContent: 'flex-start'
+	},
+	col1: {
+		minWidth: "10%",
+		maxWidth: "10%"
+	},
+	col2: {
+		minWidth: "20%",
+		maxWidth: "20%"
+	},
+	col3: {
+		minWidth: "30%",
+		maxWidth: "30%"
+	},
+	col4: {
+		minWidth: "40%",
+		maxWidth: "40%"
+	},
+	col5: {
+		minWidth: "50%",
+		maxWidth: "50%"
+	},
+	col6: {
+		minWidth: "60%",
+		maxWidth: "60%"
+	},
+	col7: {
+		minWidth: "70%",
+		maxWidth: "70%"
+	},
+	col8: {
+		minWidth: "80%",
+		maxWidth: "80%"
+	},
+	col9: {
+		minWidth: "90%",
+		maxWidth: "90%"
+	},
+	col10: {
+		minWidth: "100%",
+		maxWidth: "100%"
 	},
 	modalView:{
 		backgroundColor: "white",
@@ -84,7 +127,8 @@ const styles = StyleSheet.create({
 		fontSize: 16
 	},
 	row: {
-		flexDirection: "row"
+		flexDirection: "row",
+		flexWrap: "wrap"
 	},
 	padding10: {
 		padding: 10

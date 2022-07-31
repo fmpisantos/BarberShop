@@ -4,5 +4,6 @@
     "@styles": "./src/styles",
     "@store":"./src/redux",
     "@assets":"./assets",
-    "@langs": "./src/langs"
+    "@langs": "./src/langs",
+    "@utils": "./src/utils"
 }
