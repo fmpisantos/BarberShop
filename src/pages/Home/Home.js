@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Platform } from 'react-native';
 
 import ModalServices from './ModalServices';
 import MainPageImage from './MainPageImage';
@@ -9,8 +9,8 @@ import ModalDate from './ModalDate';
 
 export default function Home(props) {
 	return (
-		<View style={props.style.container}>
-			<View style={{ position: 'absolute', top: 10, right: 10 }}>
+		<View style={[props.style.container, props.style.fix]}>
+			<View style={{ position: 'absolute', top: (Platform.OS === 'ios' ? 20 : 0) +10, right: 10 }}>
 				<Button title="Barberiro" color="#000000" onPress={()=>props.navigation.navigate("ScheduleViewer")}/>
 			</View>
 			<ModalServices {...props} />

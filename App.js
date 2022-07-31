@@ -42,7 +42,7 @@ const App = () => {
     const [barbers, setBarbers] = useState([]);
 
     // const url = 'https://notalkfood.herokuapp.com';
-    const localhost = '192.168.1.29' // 'localhost'
+    const localhost = 'localhost'//'192.168.1.29' // 'localhost'
     const url = `http:${localhost}:8080`;
 
     const loadBarbers = () => {
@@ -134,7 +134,7 @@ const App = () => {
                 }}
                 initialRouteName="Home"
             >
-                <Stack.Screen name="Home">
+            <Stack.Screen name="Home">
                     {(props) => (
                         <Home
                             {...props}
@@ -176,7 +176,9 @@ const App = () => {
                 </Stack.Screen>
 
                 <Stack.Screen name="ScheduleViewer">
-                    {(props) => <ScheduleViewer {...props} url={url} lang={lang} style={styles} servicos={servicos}/>}
+                    {(props) => (
+                        <ScheduleViewer {...props} url={url} lang={lang} style={styles} servicos={servicos}/>
+                    )}
                 </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
@@ -185,7 +187,7 @@ const App = () => {
 
 export default function AppWrapper() {
     return (
-        <Provider store={store}>
+        <Provider store={store} style={styles.fix}>
             <App/>
         </Provider>
     );

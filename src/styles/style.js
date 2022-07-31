@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+	fix: {
+		paddingTop: Platform.OS === 'ios' ? 20 : 0
+	},
 	background1:{
 		backgroundColor: '#C48F41',
 	},

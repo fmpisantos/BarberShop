@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import stateReducer from './firebaseReducer';
 
 export const slice = createSlice({
     name: 'firebase',
