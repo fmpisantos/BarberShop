@@ -1,5 +1,6 @@
-import {Platform, StyleSheet} from 'react-native';
+import {Platform, StyleSheet, Dimensions} from 'react-native';
 
+const dim = Dimensions.get("screen");
 const styles = StyleSheet.create({
 	fix: {
 		paddingTop: Platform.OS === 'ios' ? 20 : 0
@@ -115,8 +116,8 @@ const styles = StyleSheet.create({
 		resizeMode: 'stretch'
 	},
 	bigButton: {
-		width: "80%",
-		height: "7%",
+		width: "100%",
+		height: dim.height * 0.07,
 		borderRadius: 10,
 	},
 	button: {
@@ -125,6 +126,18 @@ const styles = StyleSheet.create({
 	bigButtonText:{
 		color: "#fff",
 		fontSize: 16
+	},
+	borderButton: {
+		marginHorizontal: 10,
+		paddingTop: 10,
+		paddingBottom: 10,
+		borderRadius: 10,
+		borderWidth: 1,
+		borderColor: '#000000'
+	},
+	normalFlex: {
+		flexDirection: undefined,
+		flexWrap: undefined
 	},
 	row: {
 		flexDirection: "row",
@@ -162,6 +175,9 @@ const styles = StyleSheet.create({
 	colorWhite: {
 		color: "#fff"
 	},
+	spacingx2:{
+		paddingVertical: "5%"
+	},
 	spacing: {
 		paddingVertical: "2.5%"
 	},
@@ -171,6 +187,9 @@ const styles = StyleSheet.create({
 	center:{
 		justifyContent: 'center',
        	alignItems: 'center'
+	},
+	centerHorizontaly:{
+		justifyContent: 'center'
 	},
 	centerVerticaly:{
 		alignItems: 'center',

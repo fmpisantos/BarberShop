@@ -13,7 +13,7 @@ import styles from '@styles/style';
 
 //Pages
 import Home from '@pages/Home/Home';
-import UserLogin from '@pages/Login/UserLogin';
+import UserLogin from '@pages/Login/ModalLogin';
 import ScheduleViewer from '@pages/Schedule/ScheduleViewer';
 
 // Components
@@ -36,9 +36,10 @@ import {
 } from '@store/create/state';
 import {
     setUser,
-    resetUser,
+    clearUser,
     state as loginState
 }from '@store/firebase/firebase';
+import {validatePhoneNumber} from "./src/utils/Regex";
 
 const App = () => {
     const navigationRef = useNavigationContainerRef();
@@ -124,12 +125,14 @@ const App = () => {
     };
     const _saveUserInfo = (field, val) => {
         dispatch(setUser( {
-            ...loginControl,
-            [field]: val
+            field: field,
+            val: val
         }));
     }
+    const _clearUser = () => {
+        dispatch(clearUser());
+    }
 
-    console.disableYellowBox = true;
     LogBox.ignoreAllLogs(true)
 
     const fromNumberToString = (number) => {
@@ -144,7 +147,7 @@ const App = () => {
                     headerShown: false,
                     tabBarStyle: {display: 'none'}
                 }}
-                initialRouteName="Test"
+                initialRouteName="Home"
             >
             <Stack.Screen name="Home">
                     {(props) => (
@@ -155,7 +158,6 @@ const App = () => {
                             loadServices={loadServices}
                             servicos={servicos}
                             barbers={barbers}
-                            // schedules={schedules}
                             lang={lang}
                             control={control}
                             replace={_replace}
@@ -169,23 +171,15 @@ const App = () => {
                             selectDate={_selectDate}
                             resetDate={_resetDate}
                             reset={_reset}
-                        />
-                    )}
-                </Stack.Screen>
-
-                <Stack.Screen name="Test">
-                    {(props) => (
-                        <UserLogin
-                            {...props}
-                            url={url}
-                            lang={lang}
-                            style={styles}
                             saveNumber={(number)=>{_saveUserInfo("number",number)}}
                             saveName={(name)=>{_saveUserInfo("name",name)}}
+                            checkNumber={(number)=>{let valid =validatePhoneNumber(number); _saveUserInfo("validNumber", valid); return valid;}}
                             name={loginControl.name}
                             number={loginControl.number}
                             loginState={loginControl}
                             validNumber={loginControl.validNumber}
+                            clearUser={_clearUser}
+                            login={()=>{_saveUserInfo("logged",true)}}
                         />
                     )}
                 </Stack.Screen>
@@ -201,7 +195,6 @@ const App = () => {
 };
 
 export default function AppWrapper() {
-    console.disableYellowBox = true;
     LogBox.ignoreAllLogs(true);
     return (
         <Provider store={store} style={styles.fix}>

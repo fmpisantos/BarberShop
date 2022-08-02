@@ -4,12 +4,11 @@ import stateReducer from './firebaseReducer';
 export const slice = createSlice({
     name: 'firebase',
     initialState: {
-        user: {
             id: null,
             name: "",
             phone: "",
-            validNumber: true
-        }
+            validNumber: true,
+            logged: false
     },
     ...stateReducer
 });

@@ -74,105 +74,110 @@ export default function MainPageButtons(props) {
     }
 
     return (
-        <>
-            <BigButton
-                color="#000000"
-                textColor={props.control.value[1] ? "white" : "gray"}
-                onPress={() => {
-                    if (props.servicos.length === 0) props.loadServices()
-                    if (props.control.value[1]) props.openModal(0)
-                }}
-                text={getServiceName() ?? props.lang.servico}
-                {...props}
-                icon={<ButtonIcon background={props.style.backgroundIcon}
-                                  backgroundfaded={props.style.backgroundIconFaded}
-                                  icon={<FontAwesome name="scissors" style={props.style.padding10H} size={24}
-                                                     color={props.control.value[1] ? "white" : "gray"}/>}
-                                  {...props}
-                                  active={props.control.value[1]}/>}
-                iconstyle={props.style.background1}
-            />
-            <View style={props.style.spacing}/>
-            <BigButton
-                color="#000000"
-                textColor={props.control.value[2] ? "white" : "gray"}
-                onPress={() => {
-                    if (props.barbers.length === 0) props.loadBerbers()
-                    if (props.control.value[2]) props.openModal(1)
-                }}
-                text={props.barbers[props.control.barber]?.name ?? props.lang.barbeiro}
-                {...props}
-                icon={<ButtonIcon background={props.style.backgroundIcon}
-                                  backgroundfaded={props.style.backgroundIconFaded}
-                                  icon={<Fontisto name="persons" style={props.style.padding10H} size={24}
-                                                  color={props.control.value[2] ? "white" : "gray"}/>} {...props}
-                                  active={props.control.value[2]}/>}
-                iconstyle={props.style.background1}
-            />
-            <View style={props.style.spacing}/>
-            <BigButton
-                color="#000000"
-                textColor={props.control.value[3] ? "white" : "gray"}
-                onPress={() => {
-                    if (props.control.value[3]) props.openModal(2)
-                }}
-                text={(props.control.dateSelected.hours.length > 0 && props.control.dateSelected.minutes.length > 0) ? `${props.control.dateSelected.day}/${props.control.dateSelected.month}/${props.control.dateSelected.year.substring(2, 5)} ${props.control.dateSelected.hours}:${props.control.dateSelected.minutes}` : props.lang.dataHora}
-                {...props}
-                icon={<ButtonIcon background={props.style.backgroundIcon}
-                                  backgroundfaded={props.style.backgroundIconFaded}
-                                  icon={<FontAwesome name="calendar-check-o" style={props.style.padding10H} size={24}
-                                                     color={props.control.value[3] ? "white" : "gray"}/>} {...props}
-                                  active={props.control.value[3]}/>}
-                iconstyle={props.style.background1}
-            />
-            <View style={props.style.spacing}/>
-            <BigButton
-                color="#000000"
-                textColor={props.control.value[4] ? "white" : "gray"}
-                onPress={() => {
-                    if (props.control.value[4])
-                        reservar();
-                }}
-                text={addZeroes(props.control.total) ?? props.lang.reservar}
-                {...props}
-                icon={<ButtonIcon background={props.style.backgroundIcon}
-                                  backgroundfaded={props.style.backgroundIconFaded}
-                                  icon={<FontAwesome name="save" style={props.style.padding10H} size={24}
-                                                     color={props.control.value[4] ? "white" : "gray"}/>} {...props}
-                                  active={props.control.value[4]}/>}
-                iconstyle={props.style.background1}
-            />
-            <AwesomeAlert
-                show={alert}
-                showProgress={false}
-                title={props.lang.reservar}
-                message={props.lang.reservado}
-                closeOnTouchOutside={false}
-                closeOnHardwareBackPress={false}
-                showCancelButton={false}
-                showConfirmButton={true}
-                confirmText={props.lang.dismiss}
-                confirmButtonColor="#C48F41"
-                onConfirmPressed={() => {
-                    setAlert(false);
-                    props.reset();
-                }}
-            />
-            <AwesomeAlert
-                show={errorAlert.active}
-                showProgress={false}
-                title={errorAlert.title}
-                message={errorAlert.message}
-                closeOnTouchOutside={false}
-                closeOnHardwareBackPress={false}
-                showCancelButton={false}
-                showConfirmButton={true}
-                confirmText={errorAlert.confirmText}
-                confirmButtonColor="#C48F41"
-                onConfirmPressed={() => {
-                    setErrorAlert({...errorAlert, active: false});
-                }}
-            />
-        </>
+        <View style={props.style.row}>
+            <View style={props.style.col1}/>
+            <View style={props.style.col8}>
+                <BigButton
+                    color="#000000"
+                    textColor={props.control.value[1] ? "white" : "gray"}
+                    onPress={() => {
+                        if (props.servicos.length === 0) props.loadServices()
+                        if (props.control.value[1]) props.openModal(0)
+                    }}
+                    text={getServiceName() ?? props.lang.servico}
+                    {...props}
+                    icon={<ButtonIcon background={props.style.backgroundIcon}
+                                      backgroundfaded={props.style.backgroundIconFaded}
+                                      icon={<FontAwesome name="scissors" style={props.style.padding10H} size={24}
+                                                         color={props.control.value[1] ? "white" : "gray"}/>}
+                                      {...props}
+                                      active={props.control.value[1]}/>}
+                    iconstyle={props.style.background1}
+                />
+                <View style={props.style.spacing}/>
+                <BigButton
+                    color="#000000"
+                    textColor={props.control.value[2] ? "white" : "gray"}
+                    onPress={() => {
+                        if (props.barbers.length === 0) props.loadBerbers()
+                        if (props.control.value[2]) props.openModal(1)
+                    }}
+                    text={props.barbers[props.control.barber]?.name ?? props.lang.barbeiro}
+                    {...props}
+                    icon={<ButtonIcon background={props.style.backgroundIcon}
+                                      backgroundfaded={props.style.backgroundIconFaded}
+                                      icon={<Fontisto name="persons" style={props.style.padding10H} size={24}
+                                                      color={props.control.value[2] ? "white" : "gray"}/>} {...props}
+                                      active={props.control.value[2]}/>}
+                    iconstyle={props.style.background1}
+                />
+                <View style={props.style.spacing}/>
+                <BigButton
+                    color="#000000"
+                    textColor={props.control.value[3] ? "white" : "gray"}
+                    onPress={() => {
+                        if (props.control.value[3]) props.openModal(2)
+                    }}
+                    text={(props.control.dateSelected.hours.length > 0 && props.control.dateSelected.minutes.length > 0) ? `${props.control.dateSelected.day}/${props.control.dateSelected.month}/${props.control.dateSelected.year.substring(2, 5)} ${props.control.dateSelected.hours}:${props.control.dateSelected.minutes}` : props.lang.dataHora}
+                    {...props}
+                    icon={<ButtonIcon background={props.style.backgroundIcon}
+                                      backgroundfaded={props.style.backgroundIconFaded}
+                                      icon={<FontAwesome name="calendar-check-o" style={props.style.padding10H}
+                                                         size={24}
+                                                         color={props.control.value[3] ? "white" : "gray"}/>} {...props}
+                                      active={props.control.value[3]}/>}
+                    iconstyle={props.style.background1}
+                />
+                <View style={props.style.spacing}/>
+                <BigButton
+                    color="#000000"
+                    textColor={props.control.value[4] ? "white" : "gray"}
+                    onPress={() => {
+                        if (props.control.value[4])
+                            reservar();
+                    }}
+                    text={addZeroes(props.control.total) ?? props.lang.reservar}
+                    {...props}
+                    icon={<ButtonIcon background={props.style.backgroundIcon}
+                                      backgroundfaded={props.style.backgroundIconFaded}
+                                      icon={<FontAwesome name="save" style={props.style.padding10H} size={24}
+                                                         color={props.control.value[4] ? "white" : "gray"}/>} {...props}
+                                      active={props.control.value[4]}/>}
+                    iconstyle={props.style.background1}
+                />
+                <AwesomeAlert
+                    show={alert}
+                    showProgress={false}
+                    title={props.lang.reservar}
+                    message={props.lang.reservado}
+                    closeOnTouchOutside={false}
+                    closeOnHardwareBackPress={false}
+                    showCancelButton={false}
+                    showConfirmButton={true}
+                    confirmText={props.lang.dismiss}
+                    confirmButtonColor="#C48F41"
+                    onConfirmPressed={() => {
+                        setAlert(false);
+                        props.reset();
+                    }}
+                />
+                <AwesomeAlert
+                    show={errorAlert.active}
+                    showProgress={false}
+                    title={errorAlert.title}
+                    message={errorAlert.message}
+                    closeOnTouchOutside={false}
+                    closeOnHardwareBackPress={false}
+                    showCancelButton={false}
+                    showConfirmButton={true}
+                    confirmText={errorAlert.confirmText}
+                    confirmButtonColor="#C48F41"
+                    onConfirmPressed={() => {
+                        setErrorAlert({...errorAlert, active: false});
+                    }}
+                />
+            </View>
+            <View style={props.style.col1}/>
+        </View>
     );
 }

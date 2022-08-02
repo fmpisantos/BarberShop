@@ -2,15 +2,15 @@ const reducer = {
     reducers:
         {
             clearUser: state => {
-                state.user = {
-                    id: null,
-                    name: "",
-                    phone: "",
-                    validNumber: true
-                };
+                state.id = null;
+                state.name = "";
+                state.phone = "";
+                state.validNumber = true;
+                state.logged = false;
             },
             setUser:  (state, action) => {
-                state.user = action.payload.user;
+                let user = action.payload;
+                state[user.field] = user.val;
             }
         }
 }

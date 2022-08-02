@@ -21,6 +21,20 @@
             "label": "Telemóvel",
             "over": "Número de telemóvel"
         },
-        "title": "Ficha de cliente"
-    }
+        "title": "Ficha de cliente",
+        "method": {
+            "apple": {
+                "title": "Apple login"
+            },
+            "google": {
+                "title": "Google login"
+            },
+            "number": {
+                "title": "Login/Register"
+            }
+        }
+    },
+    "functionLogin": "Login",
+    "functionLogout": "Logout",
+    "agenda": "Agenda"
 }

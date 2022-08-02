@@ -4,8 +4,6 @@ import Logo from '@assets/Logo.png';
 export default function MainPageImage(props) {
 	return (
 		<>
-			<Text style={[props.style.title,props.style.colorWhite]}>{props.lang.title1}</Text>
-			<View style={props.style.spacing}/>
 			<Image
 				style={props.style.bigLogoStreach}
 				source={Logo}
