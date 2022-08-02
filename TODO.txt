@@ -3,3 +3,7 @@ Acabar login do user
     Possivel integração com apple login e google login
 Filtrar calendario por user/barber/barbershop
 
+
+
+Apple login:
+    https://barbershop-115cd.firebaseapp.com/__/auth/handler

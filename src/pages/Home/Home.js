@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Platform, Text, TouchableOpacity} from 'react-native';
+import {View, Button, Platform, Text, TouchableOpacity, AsyncStorage} from 'react-native';
 
 import ModalServices from './ModalServices';
 import MainPageImage from './MainPageImage';
@@ -27,6 +27,7 @@ export default function Home(props) {
 					<BorderButton style={props.style} borderColor={"#000000"} function={() => {
 						if (props.loginState.logged) {
 							props.clearUser();
+							AsyncStorage.clear();
 							return;
 						}
 						props.openModal(-2)

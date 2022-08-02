@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LogBox, StatusBar} from 'react-native';
+import {AsyncStorage, LogBox, StatusBar} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,6 @@ import styles from '@styles/style';
 
 //Pages
 import Home from '@pages/Home/Home';
-import UserLogin from '@pages/Login/ModalLogin';
 import ScheduleViewer from '@pages/Schedule/ScheduleViewer';
 
 // Components
@@ -41,14 +40,14 @@ import {
 }from '@store/firebase/firebase';
 import {validatePhoneNumber} from "./src/utils/Regex";
 
-const App = () => {
+const App = (props) => {
     const navigationRef = useNavigationContainerRef();
 
     const [servicos, setServicos] = useState([]);
     const [barbers, setBarbers] = useState([]);
 
     // const url = 'https://notalkfood.herokuapp.com';
-    const localhost = 'localhost'//'192.168.1.29' // 'localhost'
+    const localhost = 'localhost'//'192.168.1.29'
     const url = `http:${localhost}:8080`;
 
     const loadBarbers = () => {
@@ -81,9 +80,26 @@ const App = () => {
         }
     }
 
+    const loadUser = async () => {
+        const id = await AsyncStorage.getItem("id");
+        const name = await AsyncStorage.getItem("name");
+        const number = await AsyncStorage.getItem("number");
+        if(id && id>0 && name && name.length > 0 && number && number.length > 0) {
+            _saveUserInfo("id", id);
+            _saveUserInfo("name", name);
+            _saveUserInfo("number", number);
+            _saveUserInfo("logged", true);
+        }else{
+            AsyncStorage.clear();
+            _clearUser();
+        }
+
+    }
+
     useEffect(() => {
         loadServices();
         loadBarbers();
+        loadUser();
     }, []);
 
     const control = useSelector(state);
@@ -174,6 +190,7 @@ const App = () => {
                             saveNumber={(number)=>{_saveUserInfo("number",number)}}
                             saveName={(name)=>{_saveUserInfo("name",name)}}
                             checkNumber={(number)=>{let valid =validatePhoneNumber(number); _saveUserInfo("validNumber", valid); return valid;}}
+                            setUserId={(id)=>{_saveUserInfo("id", id)}}
                             name={loginControl.name}
                             number={loginControl.number}
                             loginState={loginControl}
@@ -198,7 +215,7 @@ export default function AppWrapper() {
     LogBox.ignoreAllLogs(true);
     return (
         <Provider store={store} style={styles.fix}>
-            <App/>
+            <App />
         </Provider>
     );
 }

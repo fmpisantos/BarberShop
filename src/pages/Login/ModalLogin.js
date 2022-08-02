@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Text, TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import {Text, TouchableWithoutFeedback, Keyboard, View, AsyncStorage} from 'react-native';
 import { Textfield } from "react-native-material-kit";
 import LoginButtons from "../../components/LoginButtons";
 import BottomModal from "../../components/BottomModal";
@@ -9,16 +9,40 @@ export default function ModalLogin(props) {
         name: props.name,
         phone: props.phone
     });
-    useEffect(()=>{
-        props.clearUser();
-    },[])
+    const login = () => {
+        try {
+            fetch(`${props.url}/client`,{
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                    body: JSON.stringify({
+                        "nif": 0,
+                        "name": user.name,
+                        "email": "",
+                        "phone": user.number,
+                        "active": true
+                    })
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    props.login();
+                    AsyncStorage.setItem("id", json.id);
+                    AsyncStorage.setItem("name", user.name);
+                    AsyncStorage.setItem("number", user.number);
+                    props.closeModal();
+                })
+                .catch((err) => {
+                    alert(err);
+                });
+        }catch{}
+    }
     const loginRegister = () =>{
         props.checkNumber();
         if (props.checkNumber(user.number)) {
             props.saveName(user.name);
             props.saveNumber(user.number);
-            props.login();
-            props.closeModal();
+            login();
         }
     }
     return (
