@@ -203,7 +203,7 @@ const App = (props) => {
 
                 <Stack.Screen name="ScheduleViewer">
                     {(props) => (
-                        <ScheduleViewer {...props} url={url} lang={lang} style={styles} servicos={servicos}/>
+                        <ScheduleViewer {...props} url={url} lang={lang} style={styles} servicos={servicos} id={loginControl.id}/>
                     )}
                 </Stack.Screen>
             </Stack.Navigator>

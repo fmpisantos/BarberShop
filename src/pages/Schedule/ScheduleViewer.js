@@ -83,7 +83,7 @@ export default function ScheduleViewer(props) {
             method: 'POST',
             body: day.dateString
         }
-        fetch(`${props.url}/barbers/1/history`, request)
+        fetch(`${props.url}/history/${props.id}`, request)
             .then(response => {
                 return response.status === 200 ? response.json() : null
             })

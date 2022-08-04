@@ -26,6 +26,7 @@ export default function ModalLogin(props) {
             })
                 .then((response) => response.json())
                 .then((json) => {
+                    props.setUserId(json.id);
                     props.login();
                     AsyncStorage.setItem("id", json.id);
                     AsyncStorage.setItem("name", user.name);

@@ -36,5 +36,6 @@
     },
     "functionLogin": "Login",
     "functionLogout": "Logout",
-    "agenda": "Agenda"
+    "agenda": "Agenda",
+    "loginRequired": "É necessário fazer login para completar a marcação!"
 }

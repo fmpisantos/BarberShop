@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Platform, Text, TouchableOpacity, AsyncStorage} from 'react-native';
+import {View, Platform, Text, AsyncStorage} from 'react-native';
 
 import ModalServices from './ModalServices';
 import MainPageImage from './MainPageImage';
@@ -7,7 +7,8 @@ import MainPageButtons from './MainPageButtons';
 import ModalBarbers from './ModalBarbers';
 import ModalDate from './ModalDate';
 import ModalLogin from "../Login/ModalLogin";
-import BorderButton from "../../components/BorderButton";
+import BorderButton from "@components/BorderButton";
+import {validateId} from "@utils/Regex";
 
 export default function Home(props) {
 	return (
@@ -37,9 +38,11 @@ export default function Home(props) {
 					<Text style={[props.style.title, props.style.colorWhite]}>{props.lang.title1}</Text>
 				</View>
 				<View style={props.style.col3}>
-					<BorderButton style={props.style} borderColor={"#000000"} function={() => {
-						props.navigation.navigate("ScheduleViewer");
-					}} text={props.lang.agenda}/>
+					{validateId(props.loginState.id) && (
+						<BorderButton style={props.style} borderColor={"#000000"} function={() => {
+							props.navigation.navigate("ScheduleViewer");
+						}} text={props.lang.agenda}/>
+					)}
 				</View>
 			</View>
 			<ModalLogin {...props} />

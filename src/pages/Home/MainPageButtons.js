@@ -5,6 +5,8 @@ import ButtonIcon from '@components/ButtonIcon';
 import {FontAwesome, Fontisto} from '@expo/vector-icons';
 import Moment from 'moment';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import {validateId} from "../../utils/Regex";
+import stringifySafe from "react-native/Libraries/Utilities/stringifySafe";
 
 
 export default function MainPageButtons(props) {
@@ -16,6 +18,15 @@ export default function MainPageButtons(props) {
         confirmText: "Close"
     });
     const reservar = () => {
+        if(!validateId(props.loginState.id)){
+            setErrorAlert({
+                active: true,
+                title: "Status",
+                message: props.lang.loginRequired,
+                confirmText: "Close"
+            });
+            return;
+        }
         let duration = 0
         Moment().month()
         for (let i in props.control.servicosAtivos) {
@@ -26,9 +37,10 @@ export default function MainPageButtons(props) {
                     "serviceId": parseInt(i) + 1,
                     "shopId": 1,
                     "barberId": props.control.barber + 1,
-                    "clientId": 1,
+                    "clientId": props.loginState.id,
                     "dateTime": date
                 }
+                console.log(JSON.stringify(request));
                 duration += props.servicos[i].duration;
                 fetch(`${props.url}/history`, {
                     headers: {
