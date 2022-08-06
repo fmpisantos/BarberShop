@@ -5,8 +5,7 @@ import ButtonIcon from '@components/ButtonIcon';
 import {FontAwesome, Fontisto} from '@expo/vector-icons';
 import Moment from 'moment';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import {validateId} from "../../utils/Regex";
-import stringifySafe from "react-native/Libraries/Utilities/stringifySafe";
+import {validateId} from "@utils/Regex";
 
 
 export default function MainPageButtons(props) {

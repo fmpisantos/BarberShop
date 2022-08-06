@@ -4,23 +4,37 @@ import BigButton from "./BigButton";
 import ButtonIcon from "./ButtonIcon";
 import {FontAwesome} from "@expo/vector-icons";
 import { appleAuth } from '@invertase/react-native-apple-authentication';
+import {
+    GoogleSignin
+} from '@react-native-google-signin/google-signin';
 
-
+GoogleSignin.configure();
 export default function LoginButtons(props) {
     const googleSignIn = async () => {
-        // performs login request
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            props.login({
+                type: `google#${userInfo.user.id}`,
+                name: userInfo.user.name,
+                number: `${userInfo.user.email}`
+            });
+        } catch (error) {
+        }
+    }
+    const appleSignIn = async () => {
         const appleAuthRequestResponse = await appleAuth.performRequest({
             requestedOperation: appleAuth.Operation.LOGIN,
             requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
         });
-
-        // get current authentication state for user
-        // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
-        const credentialState = await appleAuth.getCredentialStateForUser(appleAuthRequestResponse.user);
-        console.log(credentialState);
-        // use credentialState response to ensure the user is authenticated
-        if (credentialState === appleAuth.State.AUTHORIZED) {
-            // user is authenticated
+        const userInfo = await appleAuth.getCredentialStateForUser(appleAuthRequestResponse.user);
+        
+        if (userInfo === appleAuth.State.AUTHORIZED) {
+            props.login({
+                type:`apple#${userInfo.authorization.id_token}`,
+                name: `${userInfo.fullName ? userInfo.fullName : `${userInfo.user.firstName} ${userInfo.user.lastName}`}`,
+                number: `${userInfo.user.email}#${userInfo.authorization.id_token}`
+            });
         }
     }
     return (
@@ -28,7 +42,7 @@ export default function LoginButtons(props) {
             <BigButton
                 color="#000000"
                 onPress={() => {
-                    const result = googleSignIn();
+                    const result = appleSignIn();
                 }}
                 text={props.lang.login.method.apple.title}
                 textColor="#ffffff"
@@ -45,7 +59,9 @@ export default function LoginButtons(props) {
             <View style={props.style.spacingHalf} />
             <BigButton
                 color="#000000"
-                onPress={() => {}}
+                onPress={() => {
+                    const result = googleSignIn();
+                }}
                 text={props.lang.login.method.google.title}
                 textColor="#ffffff"
                 {...props}
@@ -55,7 +71,7 @@ export default function LoginButtons(props) {
                                                      size={24}
                                                      color={"white"}/>}
                                   {...props}
-                                  active={false}/>}
+                                  active={true}/>}
                 iconstyle={props.style.background1}
             />
             <View style={props.style.spacing} />

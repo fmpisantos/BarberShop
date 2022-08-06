@@ -1,26 +1,29 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Text, TouchableWithoutFeedback, Keyboard, View, AsyncStorage} from 'react-native';
 import { Textfield } from "react-native-material-kit";
-import LoginButtons from "../../components/LoginButtons";
-import BottomModal from "../../components/BottomModal";
+import LoginButtons from "@components/LoginButtons";
+import BottomModal from "@components/BottomModal";
 
 export default function ModalLogin(props) {
     const [user, setUser] = useState({
+        type: "normal",
         name: props.name,
         phone: props.phone
     });
-    const login = () => {
+    const login = (signin = user) => {
+        props.saveName(signin.name);
+        props.saveNumber(signin.number);
         try {
-            fetch(`${props.url}/client`,{
+            fetch(`${props.url}/client?${signin.type.split("#")[0]}`,{
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 method: "POST",
                     body: JSON.stringify({
                         "nif": 0,
-                        "name": user.name,
+                        "name": signin.name,
                         "email": "",
-                        "phone": user.number,
+                        "phone": signin.number,
                         "active": true
                     })
             })
@@ -29,8 +32,8 @@ export default function ModalLogin(props) {
                     props.setUserId(json.id);
                     props.login();
                     AsyncStorage.setItem("id", json.id);
-                    AsyncStorage.setItem("name", user.name);
-                    AsyncStorage.setItem("number", user.number);
+                    AsyncStorage.setItem("name", signin.name);
+                    AsyncStorage.setItem("number", signin.number);
                     props.closeModal();
                 })
                 .catch((err) => {
@@ -40,11 +43,7 @@ export default function ModalLogin(props) {
     }
     const loginRegister = () =>{
         props.checkNumber();
-        if (props.checkNumber(user.number)) {
-            props.saveName(user.name);
-            props.saveNumber(user.number);
             login();
-        }
     }
     return (
         <BottomModal {...props} visible={props.control.modal === -2}>
@@ -85,7 +84,7 @@ export default function ModalLogin(props) {
                             <View style={props.style.spacingx2}/>
                             <View style={props.style.spacingx2}/>
                             <View style={props.style.spacingx2}/>
-                            <LoginButtons {...props} loginRegister={loginRegister}/>
+                            <LoginButtons {...props} loginRegister={loginRegister} login={login} />
                             <View style={props.style.spacingx2}/>
                             <View style={props.style.spacingx2}/>
                         </View>
