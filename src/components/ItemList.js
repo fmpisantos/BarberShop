@@ -26,10 +26,10 @@ export default function ItemList(props) {
                 props.style.centerVerticaly
             ]}
         >
-            <View style={{width: '20%'}}>
+            <View style={{width: '50%'}}>
                 <Text>{props.item.name}</Text>
             </View>
-            <View style={[{width: '70%'}, props.style.fixRight]}>
+            <View style={[{width: '40%'}, props.style.fixRight]}>
                 <Text>{props.fromNumberToString(props.item.price)}</Text>
                 {
                     props.item.time && (

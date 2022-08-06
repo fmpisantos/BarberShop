@@ -1,2 +1,5 @@
 É necessário adicionar segurança à API
-O login precisa de ser algo mais que Nome e login
+Testar apple login
+Tirar login por nome e telemovel
+Ao listar os eventos do dia na agenda mostrar o barbeiro e o cliente (ou o barbeiro ao cliente e o cliente ao barbeiro)
+Testar acho que todos os barbeiros conseguem ver as marcações da loja (nao está por pessoa)

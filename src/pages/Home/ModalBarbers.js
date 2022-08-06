@@ -11,16 +11,24 @@ export default function ModalBarbers(props) {
 						let i = key*3;
 						if(i <= props.barbers.length){
 							return(
-							<View style={[props.style.row, {width: "90%"}]} key={key}>
-								{i<props.barbers.length&&
-									<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i} />
-								}
-								{i+1<props.barbers.length&&
-									<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i+1} />
-								}
-								{i+2<props.barbers.length&&
-									<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i+2} />
-								}
+							<View style={[props.style.row]} key={key}>
+								<View style={props.style.col05} />
+								<View style={props.style.col3}>
+									{i<props.barbers.length&&
+										<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i} />
+									}
+								</View>
+								<View style={props.style.col3}>
+									{i+1<props.barbers.length&&
+										<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i+1} />
+									}
+								</View>
+								<View style={props.style.col3}>
+									{i+2<props.barbers.length&&
+										<BarberIcon selectBarber={(idx)=>props.selectBarber(idx)} style={props.style} control={props.control} barbers={props.barbers} index={i+2} />
+									}
+								</View>
+								<View style={props.style.col05} />
 							</View>)
 						}
 					})}

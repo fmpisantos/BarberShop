@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start'
 	},
+	col05: {
+		minWidth: "5%",
+		maxWidth: "5%"
+	},
 	col1: {
 		minWidth: "10%",
 		maxWidth: "10%"

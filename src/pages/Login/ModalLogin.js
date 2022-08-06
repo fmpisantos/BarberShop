@@ -14,7 +14,7 @@ export default function ModalLogin(props) {
         props.saveName(signin.name);
         props.saveNumber(signin.number);
         try {
-            fetch(`${props.url}/client?${signin.type.split("#")[0]}`,{
+            fetch(`${props.url}/client?type=${signin.type.split("#")[0]}`,{
                 headers: {
                     'Content-Type': 'application/json'
                 },
