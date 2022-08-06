@@ -11,7 +11,6 @@ export default function ModalLogin(props) {
         phone: props.phone
     });
     const login = (signin = user) => {
-        props.saveName(signin.name);
         props.saveNumber(signin.number);
         try {
             fetch(`${props.url}/client?type=${signin.type.split("#")[0]}`,{
@@ -30,9 +29,10 @@ export default function ModalLogin(props) {
                 .then((response) => response.json())
                 .then((json) => {
                     props.setUserId(json.id);
+                    props.saveName(json.name);
                     props.login();
                     AsyncStorage.setItem("id", json.id);
-                    AsyncStorage.setItem("name", signin.name);
+                    AsyncStorage.setItem("name", json.name);
                     AsyncStorage.setItem("number", signin.number);
                     props.closeModal();
                 })

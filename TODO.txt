@@ -3,3 +3,9 @@ Testar apple login
 Tirar login por nome e telemovel
 Ao listar os eventos do dia na agenda mostrar o barbeiro e o cliente (ou o barbeiro ao cliente e o cliente ao barbeiro)
 Testar acho que todos os barbeiros conseguem ver as marcações da loja (nao está por pessoa)
+Login esta marado -----IMPORTANTE
+    Cria tudo no post man
+    cria user na app com google 
+    marca coisas com os dois barbeiros
+    Entra na conta de um dos barbeiros
+    Volta a entrar na conta do cliente .----- ERRO
