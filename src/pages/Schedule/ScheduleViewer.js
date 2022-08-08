@@ -88,6 +88,7 @@ export default function ScheduleViewer(props) {
                 return response.status === 200 ? response.json() : null
             })
             .then((json) => {
+                console.log(json);
                 if (json !== null) {
                     let temp = items;
                     let arrCont = [];
@@ -98,7 +99,7 @@ export default function ScheduleViewer(props) {
                         let arr = Array(props.servicos.length - 1).fill(false);
                         arr[next.service_id - 1] = true;
                         let content = {
-                            name: next.clientname,
+                            name: next.client_id === props.id ? next.barbername : next.clientname,
                             services: arr,
                             start: getTimeFromMoment(start),
                             end: getTimeFromMoment(end)
