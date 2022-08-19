@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 
-export default function BarberIcon(props) {
+export default function BrarberIcon(props) {
     return (
         <TouchableOpacity onPress={() => props.selectBarber(props.index)} style={[{
             padding: "5%",

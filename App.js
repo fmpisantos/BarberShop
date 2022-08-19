@@ -55,6 +55,9 @@ const App = (props) => {
             fetch(`${url}/barbershop/1/barbers`)
                 .then((response) => response.json())
                 .then((json) => {
+                    for(let idx in json){
+                        json[idx].services = JSON.parse(json[idx].services);
+                    }
                     const barber = json.sort((a, b) => a.id > b.id);
                     setBarbers(barber);
                 })

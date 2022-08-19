@@ -13,12 +13,17 @@ const reducer = {
                 state.modal = action.payload
             },
             addService: (state, action) => {
+                for(let idx in state.servicosAtivos) 
+                    state.servicosAtivos[idx] = false;
                 state.servicosAtivos[action.payload.servico] = true;
                 state.total += action.payload.total;
+                state.value = [true, true, true, false];
+                state.modal = -1;
             },
             removeService: (state, action) => {
                 state.servicosAtivos[action.payload.servico] = false;
                 state.total -= action.payload.total;
+                state.value = [true, true, false, false];
             },
             selectBarber: (state, action) => {
                 state.barber = action.payload;
